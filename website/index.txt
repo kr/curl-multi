@@ -7,6 +7,11 @@ h2. What
 <code syntax="ruby">Curl::Multi</code> provides very high-level Ruby bindings
 for the libcurl multi intefrace.
 
+It was originally written for use by
+"www.causesonfacebook.com":http://www.causesonfacebook.com/ to process many
+concurrent http requests. <code syntax="ruby">Curl::Multi</code> is written and
+maintanied by Kristján Pétursson and Keith Rarick.
+
 h2. Installing
 
 <pre syntax="sh">$ sudo gem install curl-multi</pre>
@@ -24,15 +29,11 @@ on_failure = lambda do |ex|
   puts ex
 end
 curl.get('http://www.example.org/', on_success, on_failure)
+curl.select([], []) while curl.size > 0
 </pre>
 
 There's not much more to the interface. A good thing, too, because we don't
 really have any documentation yet. Patches are most welcome!
-
-h2. Keith's Web Page
-
-"http://xph.us/software/":http://xph.us/software/ &mdash; for curl-multi
-information and other software.
 
 h2. Forum
 
@@ -57,5 +58,8 @@ This code is free to use under the terms of the GPL version 3.
 h2. Contact
 
 Comments are welcome. Send mail to "Keith Rarick":mailto:kr@essembly.com or
-discuss things in the "forum":http://groups.google.com/group/curl-multi
+discuss things in the "forum":http://groups.google.com/group/curl-multi.
+
+Also see "Keith's web page":http://xph.us/software/ for curl-multi information
+and other software.
 
