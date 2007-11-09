@@ -5,7 +5,7 @@ h1. &#x2192; ‘curl-multi’
 h2. What
 
 <code syntax="ruby">Curl::Multi</code> provides very high-level Ruby bindings
-for the libcurl multi intefrace.
+for the libcurl multi interface.
 
 It was originally written for use by
 "www.causesonfacebook.com":http://www.causesonfacebook.com/ to process many
