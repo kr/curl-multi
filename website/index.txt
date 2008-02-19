@@ -58,7 +58,7 @@ This code is free to use under the terms of the GPL version 3.
 h2. Contact
 
 Comments are welcome. Send mail to "Keith Rarick":mailto:kr@essembly.com or
-discuss things in the "forum":http://groups.google.com/group/curl-multi.
+discuss things in the "forum":http://groups.google.com/group/ruby-curl-multi.
 
 Also see "Keith's web page":http://xph.us/software/ for curl-multi information
 and other software.
