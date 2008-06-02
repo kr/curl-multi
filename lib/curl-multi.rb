@@ -159,6 +159,8 @@ module Curl
       builder.include('<errno.h>')
       if File.exists?('/usr/include/curl/curl.h')
         builder.include('"/usr/include/curl/curl.h"')
+      elsif File.exists?('/opt/csw/include/curl/curl.h')
+        builder.include('"/opt/csw/include/curl/curl.h"')
       else
         builder.include('"/usr/local/include/curl/curl.h"')
       end
@@ -302,7 +304,7 @@ module Curl
 
           /* Wait */
           r = select(n + 1, &rfds, &wfds, &efds, (timeout < 0) ? NULL : &tv);
-          if (r < 0) rb_raise(rb_eRuntimeError, "select(): %s", sys_errlist[errno]);
+          if (r < 0) rb_raise(rb_eRuntimeError, "select(): %s", strerror(errno));
 
           ready_rfda = rb_ary_new();
           ready_wfda = rb_ary_new();
