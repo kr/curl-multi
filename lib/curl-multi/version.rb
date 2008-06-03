@@ -17,7 +17,7 @@
 module Curl #:nodoc:
   class Multi #:nodoc:
     module VERSION #:nodoc:
-      STRING = '0.1'
+      STRING = '0.2'
     end
   end
 end
