@@ -106,6 +106,8 @@ module Curl
       end
     end
 
+    STACK_DIVIDER = ' -- request stack trace is below this line -- :0'.freeze
+
     # Do as much work as possible without blocking on the network. That is,
     # read as much data as is ready and write as much data as we have buffer
     # space for. If any complete responses arrive, call their handlers.
@@ -122,6 +124,9 @@ module Curl
       raise MultiError.new(errors) if errors.size > 1
 
       :ok
+    rescue Exception => ex
+      ex.set_backtrace(ex.backtrace + [STACK_DIVIDER] + @creation_stack)
+      raise ex
     end
 
     def cleanup
@@ -135,6 +140,7 @@ module Curl
 
     # Add a URL to the queue of items to fetch
     def add(url, body, success, failure=lambda{})
+      @creation_stack = caller() # save for later, just in case
       while (h = add_to_curl(Req.new(url, success, failure), url, body)) == nil
         select([], [])
       end
