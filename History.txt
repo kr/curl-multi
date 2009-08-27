@@ -1,7 +1,0 @@
-== 0.2 2008-06-02
-
-* Build fixes on Solaris
-
-== 0.1 2007-11-08
-
-* Initial release
